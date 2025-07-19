@@ -1,0 +1,85 @@
+<div class="page-container">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="logo-placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+        </svg>
+        <span>LOGO</span>
+      </div>
+      </div>
+  </header>
+
+  <main class="main-content">
+    <div class="builder-container">
+      <div class="header">
+        <h1 class="title">AI PC Builder</h1>
+        <div class="description-box">
+          <p class="description-text">Tell us what you need, and our AI will recommend the best parts tailored to your budget, use case, and preferences.</p>
+        </div>
+      </div>
+
+      <div class="form-sections">
+        <div class="section">
+          <h2 class="section-title">Select Your Budget</h2>
+          <div>
+            <input type="range" min="500" max="5000" step="50" [(ngModel)]="budget" class="budget-slider">
+            <div class="budget-labels">
+              <span>$500</span>
+              <span>$5000</span>
+            </div>
+          </div>
+          <div class="budget-value">${{ budget }}</div>
+        </div>
+        <div class="section">
+          <h2 class="section-title">What is the Use Case?</h2>
+          <div class="options-grid-3">
+            <div>
+              <input type="radio" name="use-case" id="gaming" value="gaming" [(ngModel)]="useCase" class="radio-input">
+              <label for="gaming" class="radio-label">Gaming</label>
+            </div>
+            <div>
+              <input type="radio" name="use-case" id="productivity" value="productivity" [(ngModel)]="useCase" class="radio-input">
+              <label for="productivity" class="radio-label">Productivity</label>
+            </div>
+            <div>
+              <input type="radio" name="use-case" id="content" value="content" [(ngModel)]="useCase" class="radio-input">
+              <label for="content" class="radio-label">Content Creation</label>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="useCase === 'gaming'" class="section">
+          <h3 class="section-title">What kind of gaming?</h3>
+          <div class="options-grid-2">
+            <div>
+              <input type="radio" name="gaming-type" id="esports" value="esports" [(ngModel)]="gamingType" class="radio-input">
+              <label for="esports" class="radio-label">Esports</label>
+            </div>
+            <div>
+              <input type="radio" name="gaming-type" id="story" value="story" [(ngModel)]="gamingType" class="radio-input">
+              <label for="story" class="radio-label">Story / AAA</label>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <h2 class="section-title">Bang for your buck or Aesthetics?</h2>
+          <div class="options-grid-2">
+            <div>
+              <input type="radio" name="priority" id="optimized" value="optimized" [(ngModel)]="priority" class="radio-input">
+              <label for="optimized" class="radio-label">Optimized</label>
+            </div>
+            <div>
+              <input type="radio" name="priority" id="aesthetics" value="aesthetics" [(ngModel)]="priority" class="radio-input">
+              <label for="aesthetics" class="radio-label">Aesthetics</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="submit-section">
+        <button (click)="getRecommendations()" class="submit-button">
+          Get Recommendations
+        </button>
+      </div>
+    </div>
+  </main>
+</div>
