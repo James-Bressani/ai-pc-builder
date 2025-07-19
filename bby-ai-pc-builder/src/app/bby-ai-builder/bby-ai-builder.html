@@ -15,16 +15,22 @@
         </div>
       </div>
       <div class="form-sections">
-        <div class="section">
-          <h2 class="section-title">Select Your Budget</h2>
-          <div>
-            <input type="range" min="500" max="5000" step="50" [(ngModel)]="budget" class="budget-slider">
-            <div class="budget-labels">
-              <span>$500</span>
-              <span>$5000</span>
+        <div class="section budget-section-wrapper">
+          <div class="budget-slider-column">
+            <h2 class="section-title">Select Your Budget</h2>
+            <div>
+              <input type="range" min="500" max="5000" step="50" [(ngModel)]="budget" class="budget-slider">
+              <div class="budget-labels">
+                <span>$500</span>
+                <span>$5000</span>
+              </div>
             </div>
+            <div class="budget-value">${{ budget }}</div>
           </div>
-          <div class="budget-value">${{ budget }}</div>
+          <div class="budget-explanation-card">
+            <h3>Budget Guide</h3>
+            <p>{{ budgetExplanation }}</p>
+          </div>
         </div>
         <div class="section">
           <h2 class="section-title">What is the Use Case?</h2>

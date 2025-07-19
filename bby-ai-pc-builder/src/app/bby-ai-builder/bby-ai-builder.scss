@@ -82,7 +82,7 @@ $bby-white: #FFFFFF;
 
 .description-box {
   margin-top: 1rem;
-  max-width: 42rem;
+  max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
   background-color: $bby-light-blue-bg;
@@ -92,7 +92,7 @@ $bby-white: #FFFFFF;
 }
 
 .description-text {
-  color: $bby-dark-gray;
+  color: black;
 }
 
 .form-sections {
@@ -212,11 +212,42 @@ $bby-white: #FFFFFF;
   opacity: 0.9;
 }
 
+.budget-section-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* 2/3 for slider, 1/3 for card */
+  gap: 2rem;
+  align-items: center;
+}
+
+.budget-explanation-card {
+  background-color: $bby-light-blue-bg;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid $bby-light-gray-2;
+
+  h3 {
+    margin-top: 0;
+    color: $bby-blue;
+    font-weight: 600;
+  }
+
+  p {
+    color: $bby-dark-gray;
+    line-height: 1.6;
+  }
+}
+
 @media (min-width: 640px) {
   .options-grid-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .builder-container {
     padding: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .budget-section-wrapper {
+    grid-template-columns: 1fr;
   }
 }

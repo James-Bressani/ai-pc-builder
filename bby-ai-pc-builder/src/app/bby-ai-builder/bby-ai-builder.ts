@@ -19,6 +19,20 @@ export class BbyAiBuilder {
   public gamingType: string = 'esports';
   public priority: string = 'optimized';
 
+  public get budgetExplanation(): string {
+    if (this.budget < 750) {
+      return '$500 - $750: Entry-level system for 1080p gaming at medium settings and everyday tasks.';
+    } else if (this.budget < 1500) {
+      return '$750 - $1500: Solid 1080p high-settings gaming and smooth multitasking.';
+    } else if (this.budget < 2500) {
+      return '$1500 - $2500: Excellent for 1440p gaming and streaming or content creation.';
+    } else if (this.budget < 3500) {
+        return '$2500 - $3500: Top-tier performance for 4K gaming and professional workloads.';
+    } else {
+      return '$3500+: Maxed-out builds for uncompromising 4K gaming and demanding creative work.';
+    }
+  }
+
   /**
    * This method is called when the user clicks the submit button.
    * It gathers the current form data into a single object and logs it.
