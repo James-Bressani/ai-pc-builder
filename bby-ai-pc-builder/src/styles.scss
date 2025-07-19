@@ -2,12 +2,12 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #f3f4f6; // Light gray page background
+  font-family: 'Roboto', sans-serif;
+  background-color: #fdfdfd;
 }
 
 .app-background {
-  background-color: #f3f4f6; /* gray-100 */
+  background-color: #fdfdfd;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,13 +1,11 @@
 /* bby-ai-builder.scss */
-/* Color variables from Figma for easy management */
 $bby-blue: #0046BE;
+$bby-yellow: #FFD400;
 $bby-black: #000000;
-$bby-dark-gray: #7D7D7D;
-$bby-light-gray-1: #E7E7E7;
-$bby-light-gray-2: #D6D8D9;
-$bby-light-blue-bg: #E9EBEF;
+$bby-dark-gray: #333333;
+$bby-light-gray: #f5f5f5;
 $bby-white: #FFFFFF;
-
+$bby-border-color: #e0e0e0;
 
 :host {
   display: block;
@@ -23,126 +21,121 @@ $bby-white: #FFFFFF;
 .page-header {
   background-color: $bby-blue;
   color: $bby-white;
-  padding: 1rem; 
+  padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
 }
 
 .header-content {
   max-width: 1200px;
-}
-
-.logo-placeholder {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: $bby-white;
-
-  svg {
-    width: 32px;
-    height: 32px;
-  }
+  margin: 0 auto;
 }
 
 .logo-image {
-  height: 50px; 
+  height: 50px;
   width: auto;
 }
 
-
 .main-content {
   flex-grow: 1;
-  padding: 2rem 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  background-color: #fdfdfd;
 }
 
-.builder-container {
-  width: 100%;
-  max-width: 56rem;
-  background-color: $bby-white;
-  border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+.configurator-container {
+  display: flex;
+  gap: 2rem;
   padding: 2rem;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.form-column {
+  flex: 2;
+}
+
+.summary-column {
+  flex: 1;
+  position: sticky;
+  top: 2rem;
 }
 
 .header {
-  text-align: center;
+  text-align: left;
+  margin-bottom: 2rem;
 }
 
 .title {
   font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 700;
+  font-weight: 500;
   color: $bby-black;
-}
-
-.description-box {
-  margin-top: 1rem;
-  max-width: 60rem;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: $bby-light-blue-bg;
-  border: 1px solid $bby-light-gray-2;
-  border-radius: 0.5rem;
-  padding: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .description-text {
-  color: black;
+  font-size: 1.1rem;
+  color: $bby-dark-gray;
+  max-width: 600px;
 }
 
 .form-sections {
-  margin-top: 3rem;
   display: grid;
   gap: 2.5rem;
 }
 
 .section {
-  display: grid;
-  gap: 1rem;
+  border-top: 1px solid $bby-border-color;
+  padding-top: 2rem;
 }
 
 .section-title {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 500;
   color: $bby-black;
-  text-align: center;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.budget-value {
-  text-align: center;
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: $bby-blue;
-  letter-spacing: -0.025em;
+.budget-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .budget-slider {
-  width: 100%;
-  height: 0.5rem;
-  background-color: $bby-light-gray-1;
-  border-radius: 0.5rem;
+  flex-grow: 1;
+  height: 6px;
+  background-color: $bby-light-gray;
+  border-radius: 3px;
   -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    background: $bby-blue;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border: 4px solid $bby-white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  }
+
+  &:hover::-webkit-slider-thumb {
+    transform: scale(1.1);
+  }
 }
 
-.budget-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 24px;
-  height: 24px;
-  background: $bby-white;
-  border: 1px solid $bby-light-gray-2;
-  border-radius: 50%;
-  cursor: pointer;
-  margin-top: -8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+.budget-value {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: $bby-blue;
+  min-width: 100px;
+  text-align: right;
 }
 
 .budget-labels {
@@ -153,16 +146,17 @@ $bby-white: #FFFFFF;
   margin-top: 0.5rem;
 }
 
-.options-grid-3 {
+.options-grid-3, .options-grid-2 {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1rem;
 }
 
+.options-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
 .options-grid-2 {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
 
 .radio-input {
@@ -170,84 +164,140 @@ $bby-white: #FFFFFF;
 }
 
 .radio-label {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
   text-align: center;
-  padding: 1rem 1.5rem;
-  border: 1px solid $bby-light-gray-2;
-  border-radius: 0.5rem;
+  padding: 1.25rem;
+  border: 1px solid $bby-border-color;
+  border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: $bby-white;
+
+  &:hover {
+    border-color: $bby-blue;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0, 0.08);
+  }
+
+  &.selected {
+    background-color: lighten($bby-blue, 58%);
+    color: $bby-blue;
+    border-color: $bby-blue;
+    box-shadow: 0 2px 6px rgba(0, 70, 190, 0.15);
+  }
+}
+
+.radio-icon {
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+}
+
+.gaming-icon { background-image: url('data:image/svg+xml,...'); /* Placeholder */ }
+.productivity-icon { background-image: url('data:image/svg+xml,...'); /* Placeholder */ }
+.content-icon { background-image: url('data:image/svg+xml,...'); /* Placeholder */ }
+
+.gaming-options {
+  margin-top: -1.5rem;
+  padding-left: 2rem;
+  border-top: none;
+  border-left: 1px solid $bby-border-color;
+}
+
+.summary-card {
+  background-color: $bby-white;
+  padding: 2rem;
+  border-radius: 4px;
+  border: 1px solid $bby-border-color;
+  box-shadow: 0 2px 8px rgba(0,0,0, 0.05);
+}
+
+.summary-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: $bby-black;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid $bby-border-color;
+  padding-bottom: 1rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.summary-label {
   color: $bby-dark-gray;
 }
 
-.radio-label:hover {
-  border-color: $bby-dark-gray;
-}
-
-.radio-input:checked + .radio-label {
-  background-color: $bby-blue;
-  color: $bby-white;
-  border-color: $bby-blue;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-}
-
-.submit-section {
-  padding-top: 1.5rem;
-}
-
-.submit-button {
-  width: 100%;
-  background-color: $bby-blue;
-  color: $bby-white;
-  font-weight: 700;
-  font-size: 1.125rem;
-  padding: 1rem 0;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-.submit-button:hover {
-  opacity: 0.9;
-}
-
-.budget-section-wrapper {
-  display: grid;
-  grid-template-columns: 2fr 1fr; /* 2/3 for slider, 1/3 for card */
-  gap: 2rem;
-  align-items: center;
+.summary-value {
+  font-weight: 500;
+  color: $bby-black;
 }
 
 .budget-explanation-card {
-  background-color: $bby-light-blue-bg;
+  background-color: $bby-light-gray;
   padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid $bby-light-gray-2;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+  margin-top: 1.5rem;
 
   h3 {
     margin-top: 0;
     color: $bby-blue;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 1rem;
   }
 
   p {
     color: $bby-dark-gray;
     line-height: 1.6;
+    font-size: 0.9rem;
+    margin-bottom: 0;
   }
 }
 
-@media (min-width: 640px) {
-  .options-grid-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .builder-container {
-    padding: 3rem;
+.submit-section {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.submit-button {
+  width: 100%;
+  background-color: $bby-yellow;
+  color: $bby-black;
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 0.875rem 3rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: darken($bby-yellow, 8%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 }
 
-@media (max-width: 768px) {
-  .budget-section-wrapper {
-    grid-template-columns: 1fr;
+@media (max-width: 1024px) {
+  .configurator-container {
+    flex-direction: column;
+  }
+
+  .summary-column {
+    position: static;
   }
 }
