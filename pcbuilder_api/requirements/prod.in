@@ -1,0 +1,6 @@
+# Production-specific requirements
+-c base.txt
+-r base.in
+
+# Production WSGI server
+gunicorn

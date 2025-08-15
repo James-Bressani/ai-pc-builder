@@ -1,0 +1,14 @@
+# Development-specific requirements
+-c base.txt
+-r base.in
+
+# Testing
+pytest
+pytest-django
+
+# Code Quality
+black
+ruff
+
+# Dependency Management
+pip-tools

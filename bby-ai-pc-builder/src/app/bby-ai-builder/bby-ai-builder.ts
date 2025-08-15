@@ -1,23 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-bby-ai-builder',
-  standalone: true, // This makes it a standalone component
+  standalone: true,
   imports: [
-    CommonModule, // Required for *ngIf
-    FormsModule   // Required for [(ngModel)]
+    CommonModule,
+    FormsModule
   ],
   templateUrl: './bby-ai-builder.html',
   styleUrl: './bby-ai-builder.scss'
 })
 export class BbyAiBuilder {
-  // Properties to hold the form's state with default values
+  private readonly http = inject(HttpClient);
+  private readonly apiUrl = 'http://localhost:8000/api/v1/recommendations/';
+
   public budget: number = 1000;
   public useCase: string = 'gaming';
   public gamingType: string = 'esports';
   public priority: string = 'optimized';
+  public recommendationResponse: any = null;
 
   public get budgetExplanation(): string {
     if (this.budget < 750) {
@@ -33,21 +37,28 @@ export class BbyAiBuilder {
     }
   }
 
-  /**
-   * This method is called when the user clicks the submit button.
-   * It gathers the current form data into a single object and logs it.
-   */
   getRecommendations(): void {
     const formData = {
       budget: this.budget,
       useCase: this.useCase,
-      // Conditionally include gamingType only if the 'gaming' use case is selected
       gamingType: this.useCase === 'gaming' ? this.gamingType : null,
       priority: this.priority
     };
 
-    console.log('Form Submitted:', formData);
-    // In a real application, you would send this data to a service or an AI endpoint.
-    alert('Check the browser console (F12) to see the selected options!');
+    console.log('Sending to Django API:', formData);
+    this.recommendationResponse = null; // Reset previous response
+
+    this.http.post(this.apiUrl, formData).subscribe({
+      next: (response) => {
+        console.log('Response from Django:', response);
+        this.recommendationResponse = response;
+        alert('Success! Check the console and the page for the API response.');
+      },
+      error: (error) => {
+        console.error('Error calling API:', error);
+        this.recommendationResponse = { error: 'Failed to get recommendations. Is the Django server running?' };
+        alert('Error! Could not connect to the API. See the console for details.');
+      }
+    });
   }
 }

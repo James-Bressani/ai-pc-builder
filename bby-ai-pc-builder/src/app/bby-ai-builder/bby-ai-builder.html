@@ -95,6 +95,11 @@
       <div class="submit-section">
         <button (click)="getRecommendations()" class="submit-button">View Recommendations</button>
       </div>
+
+      <div *ngIf="recommendationResponse" class="api-response-card">
+        <h3>API Response</h3>
+        <pre>{{ recommendationResponse | json }}</pre>
+      </div>
     </div>
   </div>
 </div>
