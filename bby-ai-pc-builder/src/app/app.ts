@@ -1,11 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { BbyAiBuilder } from './bby-ai-builder/bby-ai-builder';
+import { HeaderComponent } from './header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,
-    BbyAiBuilder
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    HeaderComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

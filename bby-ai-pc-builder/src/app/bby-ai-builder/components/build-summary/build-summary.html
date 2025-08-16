@@ -1,0 +1,30 @@
+<div class="summary-column">
+    <div class="summary-card">
+      <h2 class="summary-title">Your Build Summary</h2>
+      <div class="summary-item">
+        <span class="summary-label">Budget:</span>
+        <span class="summary-value">${{ state.configForm.get('budget')?.value }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Use Case:</span>
+        <span class="summary-value">{{ state.configForm.get('useCase')?.value | titlecase }}</span>
+      </div>
+      <div *ngIf="state.configForm.get('useCase')?.value === 'gaming'" class="summary-item">
+        <span class="summary-label">Gaming Type:</span>
+        <span class="summary-value">{{ state.configForm.get('gamingType')?.value | titlecase }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Priority:</span>
+        <span class="summary-value">{{ state.configForm.get('priority')?.value | titlecase }}</span>
+      </div>
+      <div class="budget-explanation-card">
+        <h3>Budget Guide</h3>
+        <p>{{ state.budgetExplanation$ | async }}</p>
+      </div>
+
+      <div *ngIf="state.recommendationResponse$ | async as response" class="api-response-card">
+        <h3>API Response</h3>
+        <pre>{{ response | json }}</pre>
+      </div>
+    </div>
+  </div>
