@@ -1,0 +1,26 @@
+<div class="summary-card">
+  <h2>Your Custom PC Build</h2>
+  <div class="summary-content">
+    <div class="summary-item">
+      <span class="item-label">CPU:</span>
+      <span class="item-value">{{ pcBuild().cpu || 'Not selected' }}</span>
+    </div>
+    <div class="summary-item">
+      <span class="item-label">Graphics Card:</span>
+      <span class="item-value">{{ pcBuild().gpu || 'Not selected' }}</span>
+    </div>
+    <div class="summary-item">
+      <span class="item-label">RAM:</span>
+      <span class="item-value">{{ pcBuild().ram || 'Not selected' }}</span>
+    </div>
+    <div class="summary-item">
+      <span class="item-label">Storage:</span>
+      <span class="item-value">{{ pcBuild().storage || 'Not selected' }}</span>
+    </div>
+  </div>
+  <div class="price-summary">
+    <h3>Total Price</h3>
+    <p class="price-value">$0.00</p>
+    <p class="price-note">Price calculation is not yet implemented.</p>
+  </div>
+</div>

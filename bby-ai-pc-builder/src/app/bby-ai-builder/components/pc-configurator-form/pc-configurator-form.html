@@ -1,0 +1,47 @@
+<form [formGroup]="pcConfiguration" (ngSubmit)="onSubmit()">
+  <h2>Customize Your PC</h2>
+
+  <div class="form-group">
+    <label for="cpu">CPU</label>
+    <select id="cpu" formControlName="cpu">
+      <option [ngValue]="null">Select CPU</option>
+      <option value="Intel Core i5">Intel Core i5</option>
+      <option value="Intel Core i7">Intel Core i7</option>
+      <option value="AMD Ryzen 5">AMD Ryzen 5</option>
+      <option value="AMD Ryzen 7">AMD Ryzen 7</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="gpu">Graphics Card</label>
+    <select id="gpu" formControlName="gpu">
+      <option [ngValue]="null">Select GPU</option>
+      <option value="NVIDIA GeForce RTX 4060">NVIDIA GeForce RTX 4060</option>
+      <option value="NVIDIA GeForce RTX 4070">NVIDIA GeForce RTX 4070</option>
+      <option value="AMD Radeon RX 7700 XT">AMD Radeon RX 7700 XT</option>
+      <option value="AMD Radeon RX 7800 XT">AMD Radeon RX 7800 XT</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="ram">RAM</label>
+    <select id="ram" formControlName="ram">
+      <option [ngValue]="null">Select RAM</option>
+      <option value="16GB DDR5">16GB DDR5</option>
+      <option value="32GB DDR5">32GB DDR5</option>
+      <option value="64GB DDR5">64GB DDR5</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="storage">Storage</label>
+    <select id="storage" formControlName="storage">
+      <option [ngValue]="null">Select Storage</option>
+      <option value="1TB NVMe SSD">1TB NVMe SSD</option>
+      <option value="2TB NVMe SSD">2TB NVMe SSD</option>
+      <option value="4TB NVMe SSD">4TB NVMe SSD</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!pcConfiguration.valid">Add to Cart</button>
+</form>

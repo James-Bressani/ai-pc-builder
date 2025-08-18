@@ -1,0 +1,22 @@
+:host {
+    display: block;
+    padding: 2rem;
+}
+
+.page-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.configurator-container {
+    // styles for the configurator side
+}
+
+.summary-container {
+    // styles for the summary side
+    position: sticky;
+    top: 100px; // Adjust based on header height
+}
